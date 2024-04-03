@@ -1,23 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './PokemonDetail.css';
 
-function PokemonDetail({ pokemonData }) {
+function PokemonDetail() {
+  const id = useParams().id
+
+  const [pokemon, setPokemon] = useState(null)
+
+  useEffect(() => {
+    const getPokemon = async () => {
+      try {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        const responseData = await response.json();
+        setPokemon(responseData);
+        console.log(responseData.sprites.other.home.front_default)
+      } catch (e) {
+        console.error('Error during get:', e)
+      }
+    }
+
+    getPokemon()
+  }, [])
 
   return (
-    <li class="animating" >
-        <img src={"https://assets.pokemon.com/assets/cms2/img/pokedex/detail/002.png"} alt="profile"/>
+    <li className="animating" >
+        <img src={pokemon.sprites.other.home.front_default} alt="profile"/>
 
-      <div class="pokemon-info">
-        <p class="id">
-          <span class="number-prefix">Nº&nbsp;</span>0002
+      <div className="pokemon-info">
+        <p className="id">
+          <span className="number-prefix">Nº&nbsp;</span>0002
         </p>
         <h5>Herbizarre</h5>
 
-        <div class="abilities">
+        <div className="abilities">
           <span class="pill background-color-grass">Plante</span>
         </div>
-        <div class="abilities">
-          <span class="pill background-color-poison">Poison</span>
+        <div className="abilities">
+          <span className="pill background-color-poison">Poison</span>
         </div>
       </div>
     </li>

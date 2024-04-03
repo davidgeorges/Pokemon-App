@@ -1,0 +1,52 @@
+.card {
+    width: 200px; /* Largeur fixe de la carte */
+    border-radius: 10px; /* Coins arrondis de la carte */
+    margin: 10px; /* Marge autour de la carte */
+    text-align: center; /* Centrer le contenu de la carte */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    overflow: hidden; /* Cacher les coins arrondis de l'image */
+    background-color: rgb(222, 218, 213);
+  }
+  
+  .card img {
+    width: 100%; /* Image remplissant toute la largeur de la carte */
+    height: auto; /* Hauteur automatique pour maintenir les proportions */
+    display: block; /* Rendre l'image un élément de bloc */
+    border-top-left-radius: 10px; /* Coins arrondis supérieurs de l'image */
+    border-top-right-radius: 10px; /* Coins arrondis supérieurs de l'image */
+  }
+  
+  .card p {
+    font-size: 16px; /* Taille de police du texte */
+    font-weight: bold; /* Police en gras pour le texte */
+    margin: 0; /* Supprimer la marge par défaut */
+    padding: 10px; /* Ajouter un espacement intérieur */
+    background-color: #FFFFFF;
+  }
+  .card:hover {
+    animation: bounce 0.5s both; /* Lance l'animation sur survol */
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: translateY(0); /* La carte reste à sa position d'origine */
+    }
+    50% {
+      transform: translateY(-10px); /* La carte monte */
+    }
+    100% {
+      transform: translateY(0); /* La carte revient à sa position d'origine */
+    }
+  }
+  
+  .card-container {
+    display: flex;
+    justify-content: center;
+}
+.container-content{
+    display: flex;
+    width: 75vw;
+    flex-flow: row wrap;
+    justify-content: space-between; /* Pour espacer les cartes horizontalement */
+
+}

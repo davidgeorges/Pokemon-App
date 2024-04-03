@@ -15,10 +15,12 @@ function Home() {
   }, [])
 
   return (
-    <div>
+    <div className="card-container" >
+      <div className="container-content">
       {pokemonList.map((pokemon, index) => (
         <PokemonCard pokemon={pokemon} key={index} />
       ))}
+      </div>
     </div>
   )
 }

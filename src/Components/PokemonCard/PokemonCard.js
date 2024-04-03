@@ -1,15 +1,20 @@
-import React from 'react'
+import React from 'react';
+import './PokemonCard.css';
 
 export default function PokemonCard({ pokemon, key }) {
+  const capitalizeFirstLetter = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+ 
   return (
-    <div key={key}>
+    <div  className="card" key={key}>
       <img
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
           pokemon.url.split('/')[6]
         }.png`}
         alt={pokemon.name}
       />
-      <p>{pokemon.name} </p>
+      <p>{capitalizeFirstLetter(pokemon.name)}  </p>
     </div>
   )
 }
