@@ -1,6 +1,10 @@
-.pokemon-info{clear:both;top:-5px;padding-left:7.2525%}
+.pokemon-info{
+    clear:both;
+    top:-5px;
+    padding-left:7.2525%;
+}
 
-.pokedex-results .results li a {
+pokedex-results results li a {
     background: #F2F2F2;
     float: left;
     display: block;

@@ -1,4 +1,5 @@
 import React from 'react';
+import './PokemonDetail.css';
 
 function PokemonDetail({ pokemonData }) {
 
