@@ -5,17 +5,23 @@ import './PokemonDetail.css';
 function PokemonDetail() {
   const id = useParams().id
 
-  const [pokemon, setPokemon] = useState(null)
+  const [pokemons, setPokemons] = useState([])
 
   useEffect(() => {
     const getPokemon = async () => {
       try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
         const responseData = await response.json();
-        setPokemon(responseData);
-        console.log(responseData.sprites.other.home.front_default)
+        let pokemon = {}
+        pokemon.id = responseData.id;
+        pokemon.sprite = responseData.sprites.other.home.front_default;
+        pokemon.name = responseData.name;
+        pokemon.hp = responseData.stats[0].base_stat;
+        pokemon.abilities = responseData.abilities
+        console.log(responseData)
+        setPokemons([pokemon]);
       } catch (e) {
-        console.error('Error during get:', e)
+        console.error('Error during get pokemon:', e)
       }
     }
 
@@ -23,23 +29,16 @@ function PokemonDetail() {
   }, [])
 
   return (
-    <li className="animating" >
-        <img src={pokemon.sprites.other.home.front_default} alt="profile"/>
-
-      <div className="pokemon-info">
-        <p className="id">
-          <span className="number-prefix">Nº&nbsp;</span>0002
-        </p>
-        <h5>Herbizarre</h5>
-
-        <div className="abilities">
-          <span class="pill background-color-grass">Plante</span>
-        </div>
-        <div className="abilities">
-          <span className="pill background-color-poison">Poison</span>
+    pokemons.map(pokemon => (
+      <div>
+        <h1 className='title'>{pokemon.name} N°{pokemon.id}</h1>
+        <div className="container-img">
+          <div className='image'>
+            <img src={pokemon.sprite} alt="profile"/>
+          </div>
         </div>
       </div>
-    </li>
+    ))
   );
 }
 

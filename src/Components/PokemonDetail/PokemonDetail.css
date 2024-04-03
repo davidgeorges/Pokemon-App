@@ -13,3 +13,18 @@ pokedex-results results li a {
     width: 100%;
     padding-top: 100%;
 }
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    background-color: #E9E2E2;
+    border-radius: 20px;
+}
