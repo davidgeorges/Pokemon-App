@@ -3,7 +3,7 @@
     border-radius: 10px; /* Coins arrondis de la carte */
     margin: 10px; /* Marge autour de la carte */
     text-align: center; /* Centrer le contenu de la carte */
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     overflow: hidden; /* Cacher les coins arrondis de l'image */
     background-color: rgb(222, 218, 213);
   }
@@ -23,7 +23,22 @@
     padding: 10px; /* Ajouter un espacement intérieur */
     background-color: #FFFFFF;
   }
-
+  .card:hover {
+    animation: bounce 0.5s both; /* Lance l'animation sur survol */
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: translateY(0); /* La carte reste à sa position d'origine */
+    }
+    50% {
+      transform: translateY(-10px); /* La carte monte */
+    }
+    100% {
+      transform: translateY(0); /* La carte revient à sa position d'origine */
+    }
+  }
+  
   .card-container {
     display: flex;
     justify-content: center;
