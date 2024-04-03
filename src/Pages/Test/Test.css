@@ -1,0 +1,44 @@
+.container {
+    position: relative;
+    width: 1200px;
+    height: 600px; /* Hauteur du terrain */
+    background-image: url("./bg.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.pokemon-1 {
+    position: fixed;
+    width: 120px;
+    height: 120px;
+    top: 350px; 
+    left: 40vh; 
+}
+
+.pokemon-2 {
+    position: fixed;
+    width: 130px;
+    height: 130px;
+    top: 42vh;
+    right: 40vh; 
+}
+
+.pokemon-1-hp {
+    position: fixed;
+    width: 350px;
+    height: 100px;
+    top: 20vh; 
+    right: 115vh;
+    transform: translate(50%, -50%); 
+}
+
+.pokemon-2-hp {
+    position: fixed; 
+    width: 400px;
+    height: 100px;
+    top: 70vh; 
+    right: 27.5vh; 
+    transform: translate(50%, -50%); 
+}
+
