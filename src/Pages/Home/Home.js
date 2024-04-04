@@ -21,7 +21,8 @@ function Home() {
     <div className="card-container" >
       <div className="container-content">
       {pokemonList.map((pokemon, index) => (
-        <NavLink to={`/pokemonDetailsPage/${pokemon.url.split('/')[pokemon.url.split('/').length - 2]}`}><PokemonCard pokemon={pokemon} key={index} /></NavLink>
+        // <NavLink to={`/pokemonDetailsPage/${pokemon.url.split('/')[pokemon.url.split('/').length - 2]}`}><PokemonCard pokemon={pokemon} key={index} /></NavLink>
+        <PokemonCard pokemon={pokemon} key={index} />
       ))}
       </div>
     </div>

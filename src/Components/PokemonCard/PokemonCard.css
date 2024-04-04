@@ -50,3 +50,14 @@
     justify-content: space-between; /* Pour espacer les cartes horizontalement */
 
 }
+
+.card-pokemon {
+  height: 590px;
+  margin-left: -120px;
+  width: 420px;
+}
+
+.image-pokemon {
+  margin: 64px 0 0 90px;
+  width: 227px;
+}
