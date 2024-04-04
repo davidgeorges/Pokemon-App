@@ -111,7 +111,7 @@ export default function PokemonCard({ pokemon, key }) {
           }.png`}
           alt={pokemon.name}
         />
-        <p>{capitalizeFirstLetter(pokemon.name)}  </p>
+        <p>{capitalizeFirstLetter(pokemon.name)} N°{pokemon.url.split('/')[6]}</p>
       </div></NavLink>
       {/* <Modal
       open={open}
