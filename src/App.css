@@ -36,35 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-nav {
-  align-items: center;
-  background-color: rgb(222, 218, 213);
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 50px;
-  padding: 20px 100px;
-  text-decoration: none;
-}
-
-nav img {
-  width: 150px;
-}
-
-nav ul {
-  list-style-type: none;
-}
-
-nav ul li {
-  font-size: 22px;
-  text-decoration: underline;
-}
-
-nav ul li:hover {
-  color: #00000050;
-}
-
-a {
-  color: black;
-  text-decoration: none;
-}

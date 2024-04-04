@@ -5,17 +5,13 @@ import Home from './Pages/Home/Home';
 import Favorites from './Pages/Favorites/Favorites';
 import Test from './Pages/Test/Test';
 import PokemonDetailsPage from './Pages/PokemonDetailsPage/PokemonDetailsPage';
+import NavBar from './Components/NavBar/NavBar';
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <nav>
-          <NavLink to="/"><img src={require('./images/pokemon.png')} /></NavLink>
-          <ul>
-            <NavLink to="/"><li>Pokédex</li></NavLink>
-          </ul>
-        </nav>
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/favorites" element={<Favorites />} />
