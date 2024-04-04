@@ -103,8 +103,8 @@ export default function PokemonCard({ pokemon, key }) {
 
   return (
     <>
-      <NavLink to={`/PokemonDetails/${pokemon.url.split('/')[6]}`}>
-        <div style={{backgroundColor:backgroundColor}} className="card" key={key} /*onClick={handleOpen}*/>
+      {/* <NavLink to={`/PokemonDetails/${pokemon.url.split('/')[6]}`}> */}
+        <div style={{backgroundColor:backgroundColor}} className="card" key={key} onClick={handleOpen}>
         <img style={{backgroundColor:backgroundColor}}
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
             pokemon.url.split('/')[6]
@@ -112,19 +112,19 @@ export default function PokemonCard({ pokemon, key }) {
           alt={pokemon.name}
         />
         <p>{capitalizeFirstLetter(pokemon.name)} N°{pokemon.url.split('/')[6]}</p>
-      </div></NavLink>
-      {/* <Modal
+      </div>{/*</NavLink> */}
+      <Modal
       open={open}
       onClose={handleClose}
     >
       <Box sx={style}>
-        <div className="card-pokemon" style={{ backgroundImage: `url(${require("../../images/card.jpg")})` }} >
-          <img className="image-pokemon" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+        <div className="card-pokemon" style={{ backgroundColor: backgroundColor }} >
+          {/* <img className="image-pokemon" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
               pokemon.url.split('/')[6]
-            }.png`} />
+            }.png`} /> */}
         </div>
       </Box>
-    </Modal> */}
+    </Modal>
     </>
   )
 }
