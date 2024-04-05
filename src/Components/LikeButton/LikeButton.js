@@ -27,7 +27,9 @@ function LikeButton({ pokemon, removeFromFavorites }) {
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
       e.stopPropagation();
       setLiked(false);
-      removeFromFavorites(pokemon);
+      if(removeFromFavorites !== undefined){
+        removeFromFavorites(pokemon)
+      }
     };
   
     if (liked)
