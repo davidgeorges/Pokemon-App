@@ -20,18 +20,28 @@ function Pagination({ currentPage, totalPages, onPageChange, setCurrentPage }) {
   return (
     <div className="pagination-container">
       {currentPage === 0 ? (
-        <div> </div>
+        <div className="precedent-btn"> </div>
       ) : (
-        <div onClick={() => setCurrentPage(currentPage - 1)}>
-          precedent{Math.ceil(totalPages)} {currentPage + 1}
+        <div
+          className="precedent-btn"
+          onClick={() => setCurrentPage(currentPage - 1)}
+        >
+          precedent
         </div>
       )}
 
-      <ul className="pagination">{renderPageNumbers()}</ul>
+      <div className="pagination">
+        {(currentPage + 1).toString()} / {Math.ceil(totalPages.toString())}
+      </div>
       {totalPages === currentPage + 1 ? (
-        <div> </div>
+        <div className="precedent-btn"> </div>
       ) : (
-        <div onClick={() => setCurrentPage(currentPage + 1)}>suivant</div>
+        <div
+          className="precedent-btn"
+          onClick={() => setCurrentPage(currentPage + 1)}
+        >
+          suivant
+        </div>
       )}
     </div>
   )

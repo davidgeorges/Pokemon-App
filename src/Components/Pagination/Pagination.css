@@ -1,18 +1,23 @@
 .pagination {
   list-style-type: none;
   display: flex;
-  width: 1000px;
-  background-color: blue;
-  flex-flow: row wrap;
-  height: 200px;
+  justify-content: center;
 }
+.pagination-container {
+  width: 300px;
 
+  display: flex;
+  justify-content: space-between;
+}
 .pagination li {
   margin: 0 5px;
   height: auto;
-  background-color: purple;
 }
-
+.precedent-btn {
+  width: 80px;
+  cursor: pointer;
+  text-align: center;
+}
 .pagination li span {
   display: inline-block;
   text-decoration: none;
