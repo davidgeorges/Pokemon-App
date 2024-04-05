@@ -1,30 +1,54 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import Pagination from '../../Components/Pagination/Pagination'
 import PokemonCard from '../../Components/PokemonCard/PokemonCard'
+import SearchBar from '../../Components/SearchBar/SearchBar'
 import './Home.css'
-
 function Home() {
-  const [pokemonList, setPokemonList] = useState([])
+  const [allPokemonList, setAllPokemonList] = useState([])
+  const [filteredPokemonList, setFilteredPokemonList] = useState([])
+
+  const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
     async function getPokemonList() {
-      const response = await fetch('https://pokeapi.co/api/v2/pokemon')
+      const response = await fetch(
+        'https://pokeapi.co/api/v2/pokemon?offset=0&limit=1000',
+      )
+
       const list = await response.json()
-      console.log(list.results[10].url.split('/')[list.results[10].url.split('/').length - 2])
-      setPokemonList(list.results)
+
+      setAllPokemonList(list.results)
+      setFilteredPokemonList(list.results.slice(0, 20))
     }
 
     getPokemonList()
   }, [])
 
+  useEffect(() => {
+    const pokemonFiltered = allPokemonList.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    )
+
+    const pokemonOnCurrentPage = pokemonFiltered.slice(0, 20)
+    setFilteredPokemonList(pokemonOnCurrentPage)
+  }, [searchTerm])
+
+  // const pokemonDisplayed =
+  //   searchTerm === ''
+  //     ? pokemonList
+  //     : pokemonList.filter((pokemon) =>
+  //         pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()),
+  //       )
+
   return (
-    <div className="card-container" >
+    <div className="card-container">
+      <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
       <div className="container-content">
-      {pokemonList.map((pokemon, index) => (
-        // <NavLink to={`/pokemonDetailsPage/${pokemon.url.split('/')[pokemon.url.split('/').length - 2]}`}><PokemonCard pokemon={pokemon} key={index} /></NavLink>
-        <PokemonCard pokemon={pokemon} key={index} />
-      ))}
+        {filteredPokemonList.map((pokemon, index) => (
+          <PokemonCard pokemon={pokemon} key={index} />
+        ))}
       </div>
+      <Pagination currentPage={2} totalPages={20} onPageChange={3} />
     </div>
   )
 }

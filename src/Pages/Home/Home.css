@@ -1,3 +1,8 @@
 p {
-    color: black;
+  color: black;
+}
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

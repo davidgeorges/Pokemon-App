@@ -1,10 +1,10 @@
-import React from 'react';
-import "./App.css";
-import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
-import Home from './Pages/Home/Home';
-import Favorites from './Pages/Favorites/Favorites';
-import PokemonDetailsPage from './Pages/PokemonDetailsPage/PokemonDetailsPage';
-import NavBar from './Components/NavBar/NavBar';
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import './App.css'
+import NavBar from './Components/NavBar/NavBar'
+import Favorites from './Pages/Favorites/Favorites'
+import Home from './Pages/Home/Home'
+import PokemonDetailsPage from './Pages/PokemonDetailsPage/PokemonDetailsPage'
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
