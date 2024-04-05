@@ -1,5 +1,6 @@
-    .btnLike{
-        position:relative;
-        left: 38%;
-        top:2%
-    }
+.btnLike {
+  position: relative;
+  left: 38%;
+  top: 2%;
+  cursor: pointer;
+}

@@ -25,6 +25,7 @@ function Pagination({ currentPage, totalPages, onPageChange, setCurrentPage }) {
         <div
           className="precedent-btn"
           onClick={() => setCurrentPage(currentPage - 1)}
+          style={{ color: 'white' }}
         >
           Precedent
         </div>
@@ -39,6 +40,7 @@ function Pagination({ currentPage, totalPages, onPageChange, setCurrentPage }) {
         <div
           className="precedent-btn"
           onClick={() => setCurrentPage(currentPage + 1)}
+          style={{ color: 'white' }}
         >
           Suivant
         </div>

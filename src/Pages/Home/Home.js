@@ -28,7 +28,7 @@ function Home() {
       )
       setFilteredPokemonList(list.results)
     }
-
+    console.log('first render')
     getPokemonList()
   }, [])
 
@@ -59,11 +59,17 @@ function Home() {
   return (
     <div className="card-container">
       <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
-      <div className="container-content">
-        {twentyFirstFilteredPokemonList.map((pokemon, index) => (
-          <PokemonCard pokemon={pokemon} key={index} />
-        ))}
-      </div>
+
+      {filteredPokemonList.length == 0 ? (
+        <h1>Aucun pokemon trouvé</h1>
+      ) : (
+        <div className="container-content">
+          {twentyFirstFilteredPokemonList.map((pokemon, index) => (
+            <PokemonCard pokemon={pokemon} key={index} />
+          ))}
+        </div>
+      )}
+
       <Pagination
         currentPage={currentPage}
         totalPages={filteredPokemonList.length / 20}
