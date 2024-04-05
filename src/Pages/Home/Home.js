@@ -5,20 +5,28 @@ import SearchBar from '../../Components/SearchBar/SearchBar'
 import './Home.css'
 function Home() {
   const [allPokemonList, setAllPokemonList] = useState([])
+  const [
+    twentyFirstFilteredPokemonList,
+    setTwentyFirstFilteredPokemonList,
+  ] = useState([])
   const [filteredPokemonList, setFilteredPokemonList] = useState([])
+  const [currentPage, setCurrentPage] = useState(0)
 
   const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
     async function getPokemonList() {
       const response = await fetch(
-        'https://pokeapi.co/api/v2/pokemon?offset=0&limit=1000',
+        'https://pokeapi.co/api/v2/pokemon?offset=0&limit=4000',
       )
 
       const list = await response.json()
 
       setAllPokemonList(list.results)
-      setFilteredPokemonList(list.results.slice(0, 20))
+      setTwentyFirstFilteredPokemonList(
+        list.results.slice(currentPage * 20, 20 * (currentPage + 1)),
+      )
+      setFilteredPokemonList(list.results)
     }
 
     getPokemonList()
@@ -29,10 +37,18 @@ function Home() {
       pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()),
     )
 
-    const pokemonOnCurrentPage = pokemonFiltered.slice(0, 20)
-    setFilteredPokemonList(pokemonOnCurrentPage)
-  }, [searchTerm])
+    const twentyFirstPokemon = pokemonFiltered.slice(
+      currentPage * 20,
+      20 * (currentPage + 1),
+    )
 
+    setTwentyFirstFilteredPokemonList(twentyFirstPokemon)
+    setFilteredPokemonList(pokemonFiltered)
+  }, [searchTerm, currentPage])
+
+  useEffect(() => {
+    setCurrentPage(0)
+  }, [searchTerm])
   // const pokemonDisplayed =
   //   searchTerm === ''
   //     ? pokemonList
@@ -44,11 +60,16 @@ function Home() {
     <div className="card-container">
       <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
       <div className="container-content">
-        {filteredPokemonList.map((pokemon, index) => (
+        {twentyFirstFilteredPokemonList.map((pokemon, index) => (
           <PokemonCard pokemon={pokemon} key={index} />
         ))}
       </div>
-      <Pagination currentPage={2} totalPages={20} onPageChange={3} />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={filteredPokemonList.length / 20}
+        onPageChange={3}
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   )
 }

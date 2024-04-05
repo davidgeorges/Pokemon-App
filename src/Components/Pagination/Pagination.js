@@ -3,16 +3,14 @@
 import React from 'react'
 import './Pagination.css'
 
-function Pagination({ currentPage, totalPages, onPageChange }) {
+function Pagination({ currentPage, totalPages, onPageChange, setCurrentPage }) {
   // Fonction pour générer les numéros de page
   const renderPageNumbers = () => {
     const pageNumbers = []
-    for (let i = 1; i <= totalPages; i++) {
+    for (let i = 0; i < Math.ceil(totalPages); i++) {
       pageNumbers.push(
         <li key={i} className={currentPage === i ? 'active' : ''}>
-          <a href="#" onClick={() => onPageChange(i)}>
-            {i}
-          </a>
+          <span>{i + 1}</span>
         </li>,
       )
     }
@@ -21,9 +19,30 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
 
   return (
     <div className="pagination-container">
-      <div>precedent</div>
-      <ul className="pagination">{renderPageNumbers()}</ul>
-      <div> suivant</div>
+      {currentPage === 0 ? (
+        <div className="precedent-btn"> </div>
+      ) : (
+        <div
+          className="precedent-btn"
+          onClick={() => setCurrentPage(currentPage - 1)}
+        >
+          precedent
+        </div>
+      )}
+
+      <div className="pagination">
+        {(currentPage + 1).toString()} / {Math.ceil(totalPages.toString())}
+      </div>
+      {totalPages === currentPage + 1 ? (
+        <div className="precedent-btn"> </div>
+      ) : (
+        <div
+          className="precedent-btn"
+          onClick={() => setCurrentPage(currentPage + 1)}
+        >
+          suivant
+        </div>
+      )}
     </div>
   )
 }
