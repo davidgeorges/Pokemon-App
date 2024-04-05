@@ -41,10 +41,14 @@ function Home() {
       currentPage * 20,
       20 * (currentPage + 1),
     )
+
     setTwentyFirstFilteredPokemonList(twentyFirstPokemon)
     setFilteredPokemonList(pokemonFiltered)
   }, [searchTerm, currentPage])
 
+  useEffect(() => {
+    setCurrentPage(0)
+  }, [searchTerm])
   // const pokemonDisplayed =
   //   searchTerm === ''
   //     ? pokemonList
