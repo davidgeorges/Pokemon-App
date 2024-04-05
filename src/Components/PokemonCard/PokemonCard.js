@@ -30,13 +30,15 @@ export default function PokemonCard({ pokemon, key }) {
     return responseData.types[0].type.name
   })
   const [backgroundColor, setBackgroundColor] = useState('');
+  const [information, setInformation] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.url.split('/')[6]}`);
       const responseData = await response.json();
       setType(responseData.types[0].type.name);
-
+      console.log(responseData)
+      setInformation(responseData);
       switch (responseData.types[0].type.name) {
         case 'normal':
           setBackgroundColor('#A8A878');
@@ -98,7 +100,9 @@ export default function PokemonCard({ pokemon, key }) {
       }
     };
 
+    
     fetchData();
+    return () => {}
   }, [pokemon.url]);
 
   return (
@@ -118,10 +122,42 @@ export default function PokemonCard({ pokemon, key }) {
       onClose={handleClose}
     >
       <Box sx={style}>
-        <div className="card-pokemon" style={{ backgroundColor: backgroundColor }} >
-          {/* <img className="image-pokemon" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-              pokemon.url.split('/')[6]
-            }.png`} /> */}
+        <div className="card-pokemon">
+        {information && (
+          <div className="pokemon-information">
+            <div className='informations-principal'>
+              <p className='name-pokemon'>{capitalizeFirstLetter(pokemon.name)}</p>
+              {typeof type === 'string' && (
+                <p className='pokemon-type'>{capitalizeFirstLetter(type)}</p>
+              )}
+            </div>
+            <div className='height-weight'>
+              {information.weight !== null && <p style={{backgroundColor:backgroundColor}}>{information.weight / 10} kg</p>}
+              {information.height !== null && <p style={{backgroundColor:backgroundColor}}>{information.height / 10} m</p>}
+            </div>
+            <div className='abilities'>
+              <h1>Abilities</h1>
+              <div className='list-abilities'>
+                {information.abilities.map(ability => (
+                  ability.ability.name !== null && <p style={{backgroundColor:backgroundColor}}>{ability.ability.name}</p>
+                ))}
+              </div>
+            </div>
+            <div className='stats'>
+              <h1>Statistics</h1>
+              <div className='list-stats'>
+                {information.stats.map(base_stat => (
+                base_stat.base_stat !== null && base_stat.stat.name !== null && <p style={{ backgroundColor: backgroundColor }}>{base_stat.base_stat + " " + base_stat.stat.name}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+          <div className='pokemon-image' style={{ backgroundColor: backgroundColor }}>
+            {<img className="image-pokemon" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+                pokemon.url.split('/')[6]
+              }.png`} />}
+          </div>
         </div>
       </Box>
     </Modal>
