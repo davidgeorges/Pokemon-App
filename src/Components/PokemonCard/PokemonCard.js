@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import './PokemonCard.css';
 import { NavLink } from 'react-router-dom';
+import LikeButton from '../LikeButton/LikeButton';
 
 const style = {
   position: 'absolute',
@@ -16,7 +17,7 @@ const style = {
   outline: "none",
 };
 
-export default function PokemonCard({ pokemon, key }) {
+export default function PokemonCard({ pokemon, key, removeFromFavorites }) {
   const capitalizeFirstLetter = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
@@ -99,12 +100,13 @@ export default function PokemonCard({ pokemon, key }) {
     };
 
     fetchData();
-  }, [pokemon.url]);
+  }, [pokemon.url]);  
 
   return (
     <>
       {/* <NavLink to={`/PokemonDetails/${pokemon.url.split('/')[6]}`}> */}
         <div style={{backgroundColor:backgroundColor}} className="card" key={key} onClick={handleOpen}>
+        <LikeButton pokemon={pokemon} removeFromFavorites={removeFromFavorites}/>
         <img style={{backgroundColor:backgroundColor}}
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
             pokemon.url.split('/')[6]

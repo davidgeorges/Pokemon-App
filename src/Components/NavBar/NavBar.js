@@ -9,7 +9,7 @@ const NavBar = () => {
             <ul>
                 <NavLink to="/"><li>Pokédex</li></NavLink>
                 <NavLink to="/types"><li>Types</li></NavLink>
-                <NavLink to="/favoris"><li>Favoris</li></NavLink>
+                <NavLink to="/favorites"><li>Favoris</li></NavLink>
             </ul>
         </nav>
     )
