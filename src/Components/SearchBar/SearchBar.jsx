@@ -16,12 +16,14 @@ function SearchBar({ searchTerm, setSearchTerm }) {
   }
 
   return (
+    <div className="input-wrapper">
     <input
       type="text"
       placeholder="Rechercher..."
       value={searchTerm}
       onChange={handleChange}
     />
+    </div>
   )
 }
 
