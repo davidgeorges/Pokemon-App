@@ -140,7 +140,7 @@ export default function PokemonCard({ pokemon, key, removeFromFavorites }) {
               <h1>Abilities</h1>
               <div className='list-abilities'>
                 {information.abilities.map(ability => (
-                  ability.ability.name !== null && <p style={{backgroundColor:backgroundColor}}>{ability.ability.name}</p>
+                  ability.ability.name !== null && <p style={{backgroundColor:backgroundColor}}>{capitalizeFirstLetter(ability.ability.name)}</p>
                 ))}
               </div>
             </div>
@@ -148,7 +148,7 @@ export default function PokemonCard({ pokemon, key, removeFromFavorites }) {
               <h1>Statistics</h1>
               <div className='list-stats'>
                 {information.stats.map(base_stat => (
-                base_stat.base_stat !== null && base_stat.stat.name !== null && <p style={{ backgroundColor: backgroundColor }}>{base_stat.base_stat + " " + base_stat.stat.name}</p>
+                  base_stat.base_stat !== null && base_stat.stat.name !== null && <p style={{ backgroundColor: backgroundColor }}>{base_stat.base_stat + " " + capitalizeFirstLetter(base_stat.stat.name)}</p>
                 ))}
               </div>
             </div>

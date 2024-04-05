@@ -2,12 +2,16 @@
   list-style-type: none;
   display: flex;
   justify-content: center;
+  margin: 0 20px;
 }
 .pagination-container {
-  width: 300px;
-
+  margin-top: 20px;
+  background-color: #5780E0;
+  width: 100%;
+  padding: 40px;
+  font-size: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 .pagination li {
   margin: 0 5px;

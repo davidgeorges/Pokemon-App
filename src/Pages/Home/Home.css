@@ -6,3 +6,27 @@ p {
   flex-direction: column;
   align-items: center;
 }
+
+.div-loaded {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.loaded {
+  margin-top: 200px;
+  width: 200px;
+}
+
+.loaded {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
