@@ -4,12 +4,12 @@ nav {
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
-    padding: 20px 100px;
     text-decoration: none;
     width: 100%;
 }
 
 nav img {
+    padding: 20px 100px;
     background-color: #5780E0;
     width: 150px;
 }
@@ -17,6 +17,7 @@ nav img {
 nav ul {
     display: flex;
     list-style-type: none;
+    margin-right: 80px;
 }
 
 nav ul li {
