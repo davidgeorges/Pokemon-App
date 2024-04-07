@@ -6,6 +6,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     overflow: hidden; /* Cacher les coins arrondis de l'image */
     background-color: rgb(222, 218, 213);
+    cursor: pointer;
   }
   
   .card img {

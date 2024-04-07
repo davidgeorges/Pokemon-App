@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PokemonCard from '../../Components/PokemonCard/PokemonCard';
+import './Favorites.css'
 
 function Favorites() {
   const [favorites, setFavorites] = useState([]);
@@ -15,8 +16,14 @@ function Favorites() {
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
 
+  const handleOnClick = () => {
+    localStorage.clear()
+    setFavorites([])
+  }
+
   return (
     <div className="card-container">
+      <button onClick={handleOnClick}>Vider le pokédex</button>
       <div className="container-content">
         {favorites.map((pokemon, index) => (
           <PokemonCard pokemon={pokemon} key={index} removeFromFavorites={handleRemoveFromFavorites} />
